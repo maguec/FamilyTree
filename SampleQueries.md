@@ -1,5 +1,10 @@
 ```sql
 GRAPH FamilyGraph
-  MATCH tree_path = (r3:Individuals)<-{1,3}-[:Begets]-(start_node:Individuals {ID: 21121}) -[:Begets]->{1, 3} (relative:Individuals)
+  MATCH tree_path = (start_node:Individuals {ID: 223199}) <-[:Begets]-{1,10} (relative:Individuals)
+  RETURN tree_path
+  UNION ALL
+  MATCH tree_path = (start_node:Individuals {ID: 223199}) -[:Begets]->{1,10} (relative:Individuals)
+  RETURN tree_path
+NEXT
 RETURN SAFE_TO_JSON(tree_path) AS JSON
 ```
