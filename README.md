@@ -16,7 +16,7 @@
 ```bash
 gcloud spanner instances create shared-demos \
     --description="Shared Demos" --config=regional-us-west1 --edition=ENTERPRISE \
-    --processing-units=100 --default-backup-schedule-type=NONE
+    --default-backup-schedule-type=NONE
 ```
 
 ### Add a database
@@ -36,3 +36,7 @@ vi .env             #configure the variables
 ```bash
 uv run setup_spanner.py
 ```
+
+## Sample queries
+
+Some sample [Queries](./SampleQueries.md)
