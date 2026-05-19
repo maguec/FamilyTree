@@ -2,26 +2,15 @@
 
 ## Prerequisites
 
-- [Google Cloud SDK](https://cloud.google.com/sdk)
-- Python 3 or greater and Python PIP 
+- [uv](https://docs.astral.sh/uv/getting-started/installation/)
+- Python 3 or greater 
 - [Working Google Cloud CLI](https://cloud.google.com/sdk/docs/install-sdk)
 - A Google Cloud project
-- [uv](https://docs.astral.sh/uv/getting-started/installation/)
+- make
 
-
-## Setup Spanner Instance
-
-### Create Spanner instance if necessary
-
+## Ensure your cloud project is setup correctly
 ```bash
-gcloud spanner instances create shared-demos \
-    --description="Shared Demos" --config=regional-us-west1 --edition=ENTERPRISE \
-    --default-backup-schedule-type=NONE
-```
-
-### Add a database
-```bash
-gcloud spanner  databases create familytree --instance shared-demos
+gcloud auth application-default login
 ```
 
 ## Setup ENV Vars
@@ -29,6 +18,19 @@ gcloud spanner  databases create familytree --instance shared-demos
 ```bash
 cp env.sample .env
 vi .env             #configure the variables
+```
+
+## Setup Spanner Instance
+
+### Create Spanner instance if necessary
+
+```bash
+make instancecreate
+```
+
+### Add a database
+```bash
+make dbcreate
 ```
 
 ## Load the data
