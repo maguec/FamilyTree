@@ -39,7 +39,7 @@ dbcreate: ## Create Database
 	@gcloud spanner databases create $(GOOGLE_SPANNER_DATABASE) --instance  $(GOOGLE_SPANNER_INSTANCE) 
 
 instancecreate: ## Spin up a single node Spanner instance
-	@gcloud spanner instances create $(GOOGLE_SPANNER_INSTANCE) --description="Property Graph Database" --config=regional-$(GOOGLE_CLOUD_REGION) --edition=ENTERPRISE  --default-backup-schedule-type=NONE --nodes=1
+	@gcloud spanner instances create $(GOOGLE_SPANNER_INSTANCE) --description="$(GOOGLE_SPANNER_INSTANCE) Graph Database" --config=regional-$(GOOGLE_CLOUD_REGION) --edition=ENTERPRISE  --default-backup-schedule-type=NONE --nodes=1
 	#@gcloud spanner instances create $(GOOGLE_SPANNER_INSTANCE) --description="Property Graph Database" --config=regional-$(GOOGLE_CLOUD_REGION) --edition=ENTERPRISE  --processing-units=100 --default-backup-schedule-type=NONE
 
 instancedelete: ## Shutdown the Spanner instance
